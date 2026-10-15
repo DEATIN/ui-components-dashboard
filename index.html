@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f4f3ed">
+    <meta name="description" content="Маршрут — персональная панель путешественника: список дел, погода в Санкт-Петербурге и конвертер валют.">
+    <title>Маршрут — панель путешественника</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="stylesheet" href="./styles.css">
+    <script type="module" src="./js/app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#dashboard">Перейти к виджетам</a>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="./" aria-label="Маршрут — главная">
+          <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="m18.5 5.5-4 9-9 4 4-9 9-4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m9.5 9.5 5 5" stroke="currentColor" stroke-width="1.7"/></svg></span>
+          маршрут<span class="brand-dot">.</span>
+        </a>
+        <span class="header-tagline">Меньше суеты. Больше открытий.</span>
+        <a class="github-link" href="https://github.com/DEATIN/ui-components-dashboard" target="_blank" rel="noopener noreferrer">Код проекта <span aria-hidden="true">↗</span></a>
+      </header>
+
+      <main>
+        <section class="hero" aria-labelledby="page-title">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="tiny-dot"></span> ПАНЕЛЬ ПУТЕШЕСТВЕННИКА</p>
+            <h1 id="page-title">Большие планы.<br><span>Всё под рукой.</span></h1>
+            <p class="hero-description">Соберите день, в который хочется отправиться.<br class="desktop-break"> Дела, погода и бюджет — на одной карте.</p>
+            <div class="hero-location"><span class="location-pin" aria-hidden="true">↗</span><span>Санкт-Петербург <span class="muted">/ отправная точка</span></span></div>
+          </div>
+          <div class="route-art" aria-hidden="true">
+            <div class="route-art-top"><span>СЛЕДУЮЩАЯ ОСТАНОВКА</span><span class="route-coordinates">59.94° N · 30.31° E</span></div>
+            <svg class="route-map" viewBox="0 0 510 252" fill="none">
+              <defs><pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M36 0H0v36" stroke="#fff" stroke-opacity=".07"/></pattern></defs>
+              <rect width="510" height="252" fill="url(#grid)"/>
+              <path d="m-20 210 110-78 64 70 83-106 96 57 93-107 100 60" stroke="#30404a" stroke-width="28"/>
+              <path d="M7 75 112 11l97 85 82-72 83 77 114-50" stroke="#30404a" stroke-width="17"/>
+              <path d="M88 256V12M260 256V-7M434 256V-7" stroke="#3c4b54" stroke-width="2"/>
+              <path d="M98 196c28 1 34-56 74-56s56 28 82 12c40-25 39-88 95-86 33 2 26 43 62 40" stroke="#d9fb6e" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 8"/>
+              <circle cx="98" cy="196" r="9" fill="#20313b" stroke="#d9fb6e" stroke-width="3"/>
+              <circle cx="411" cy="106" r="20" fill="#d9fb6e" fill-opacity=".13"/><circle cx="411" cy="106" r="8" fill="#d9fb6e"/>
+              <g transform="translate(235 143) rotate(-25)"><circle r="24" fill="#3b5df5"/><path d="m-10 4 21-12-7 22-4-9-10-1Z" fill="#fff"/></g>
+            </svg>
+            <div class="route-art-bottom"><span>Хороший день начинается с плана.</span><span class="route-arrow">↗</span></div>
+          </div>
+        </section>
+
+        <section id="dashboard" class="dashboard-section" aria-labelledby="dashboard-title">
+          <div class="section-heading">
+            <div><div class="heading-line"><h2 id="dashboard-title">Ваша панель</h2><span id="widget-count" class="count-badge">3 виджета</span></div><p>Добавляйте нужное. Сворачивайте лишнее. Всё сохранится автоматически.</p></div>
+            <time id="today" class="today"></time>
+          </div>
+          <div class="widget-toolbar" role="group" aria-label="Добавить виджет">
+            <span class="toolbar-label">ДОБАВИТЬ ВИДЖЕТ</span>
+            <button class="add-widget" type="button" data-add="todo"><span aria-hidden="true">＋</span> Список дел</button>
+            <button class="add-widget" type="button" data-add="weather"><span aria-hidden="true">＋</span> Погода</button>
+            <button class="add-widget" type="button" data-add="currency"><span aria-hidden="true">＋</span> Валюта</button>
+            <span class="save-hint"><span class="tiny-dot"></span> Ваше пространство</span>
+          </div>
+          <p id="storage-notice" class="storage-notice" role="status" hidden></p>
+          <div id="widget-grid" class="widget-grid"></div>
+          <div id="empty-dashboard" class="empty-dashboard" hidden>
+            <span class="empty-compass" aria-hidden="true">↗</span>
+            <h3>У каждого маршрута есть начало</h3>
+            <p>Добавьте первый виджет кнопками выше.<br>Панель будет такой, как вам удобно.</p>
+            <button id="add-first-widget" class="primary-button" type="button">Начать со списка дел <span aria-hidden="true">＋</span></button>
+          </div>
+          <p class="dashboard-tip"><span aria-hidden="true">↳</span> Сворачивайте и удаляйте виджеты. Вернуть их можно в любой момент.</p>
+        </section>
+      </main>
+
+      <footer class="site-footer"><span>маршрут<span class="brand-dot">.</span> <span class="footer-caption">Место для ваших планов.</span></span><span>Практика 02 <span class="footer-divider">/</span> Сделано Алексеем Курносовым</span></footer>
+    </div>
+    <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+    <noscript><p class="noscript-notice">Для работы виджетов включите JavaScript в настройках браузера.</p></noscript>
+  </body>
+</html>

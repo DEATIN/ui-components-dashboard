@@ -1,0 +1,7 @@
+{
+  "name": "ui-components-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Маршрут — панель путешественника на HTML, CSS и JavaScript без зависимостей"
+}
